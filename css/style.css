@@ -1,0 +1,14 @@
+body {
+    color: white;
+    background-color: black;
+    font-family: 'Bitstream Vera Sans Mono', Courier, monospace;
+    margin: 20px;
+}
+
+dt {
+    margin-top: 15px;
+}
+
+a:link, a:visited {
+    color: aqua;
+}
