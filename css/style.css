@@ -12,3 +12,22 @@ dt {
 a:link, a:visited {
     color: aqua;
 }
+
+ul.list {
+    margin-top: 5px;
+    padding-left: 0;
+}
+
+li {
+    line-height: 25px;
+}
+
+span.date {
+    font-size: small;
+    margin-left: 10px;
+    color: darkgray;
+}
+
+span.email {
+    color: lightgray;
+}
