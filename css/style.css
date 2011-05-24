@@ -1,8 +1,8 @@
 body {
     color: white;
-    background-color: black;
     font-family: 'Bitstream Vera Sans Mono', Courier, monospace;
     margin: 20px;
+    background-color: black;
 }
 
 dt {
@@ -22,6 +22,10 @@ li {
     line-height: 25px;
 }
 
+p {
+    margin: 0.2em 0;
+}
+
 span.date {
     font-size: small;
     margin-left: 10px;
@@ -30,4 +34,74 @@ span.date {
 
 span.email {
     color: lightgray;
+}
+
+
+/*--- HTML-slide ---*/
+
+.slidemode {
+    position:fixed;
+    top:0; right:0; bottom:0; left:0;
+    margin: 0;
+}
+.slidemode .slide {
+    position: absolute;
+    text-shadow: rgba(0, 127, 127, 0.2) 2px 2px;
+    letter-spacing: 0.1em;
+    font-size: xx-large;
+    font-family: 'Hiragino Maru Gothic ProN';
+    width: 100%; height: 100%;
+}
+.slidemode .slide.left {
+    display: none;
+}
+.slidemode .slide.right {
+    display: none;
+}
+.slidemode .view {
+    opacity: 1;
+}
+
+.slidemode h1 {
+    font-weight: bold;
+    font-size: -webkit-xxx-large;
+    text-align: center;
+}
+.slidemode h2 {
+    margin: 0.5em;
+    font-weight: bold;
+    font-size: -webkit-xxx-large;
+}
+.slidemode pre {
+    margin: 0 1em;
+    text-shadow: none;
+}
+.slidemode code {
+    font-family: 'Bitstream Vera Sans Mono', Courier, monospace, 'Hiragino Maru Gothic ProN';
+}
+.slidemode ul {
+    margin: 0.5em;
+    line-height: normal;
+}
+.slidemode li {
+    line-height: normal;
+}
+.slidemode blockquote {
+    margin: 0.5em 1em;
+}
+.slidemode div.titlepage {
+    text-align: center;
+}
+.slidemode div#footer, div.slide {
+    position: absolute;
+    width: 100%; top: 0; left: 0;
+}
+.slidemode div#footer {
+    top: auto; bottom: 0; height: 3.0em;
+}
+.slidemode div#footer div#profile {
+    margin-left: 10px;
+}
+.slidemode div#profile, div#profile a {
+    color: darkgray;
 }

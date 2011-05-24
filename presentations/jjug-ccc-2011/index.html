@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JJUG CCC LT</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <body>
+
+    <div class="slide">
+      <h1>Enjoy livecoding!</h1>
+      <div class="titlepage">
+        <p>May 24, 2011</p>
+        <p>JJUG CCC 2011 Spring</p>
+        <p>id:sugyan</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h2>self-introduction</h2>
+      <pre><code style="color: aqua;">var</code><code> </code><code style="color: yellow;">sugyan</code><code> = {
+    name: </code><code style="color: orange;">"すぎゃーん"</code><code>,
+    age: 0x1C,
+    from: </code><code style="color: orange;">"Kamakura"</code><code>,
+    lang: [
+        </code><code style="color: orange;">"Perl"</code><code>, </code><code style="color: orange;">"JavaScript"</code><code>, </code><code style="color: orange;">"Objective-C"</code><code>,
+    ]
+};
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>livecoder</h2>
+      <blockquote>
+        <a href="http://livecoder.sugyan.com/">http://livecoder.sugyan.com/</a>
+      </blockquote>
+      <ul>
+        <li>Node</li>
+        <li>Socket.IO</li>
+        <li>Eclipse Orion web client editor</li>
+        <li>google-diff-match-patch</li>
+        <li>MongoDB</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h2>livecoder</h2>
+      <blockquote>
+        DEMO
+      </blockquote>
+    </div>
+
+    <div class="slide">
+      <h2>livecoder</h2>
+      <blockquote>
+        今後
+      </blockquote>
+      <ul>
+        <li>Web以外からのlivecoding</li>
+        <li>録画・再生</li>
+        <li>codeのeval実行</li>
+        <li><a href="http://jsdo.it/">jsdo.it</a>でも</li>
+        <li>...</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h2>qb.js</h2>
+      <pre style="font-size: x-small; letter-spacing: 0; line-height: 1.2em;"><code>$ cat qb.js
+     eval                                       ($a=
+     'a=1;p=                                 this[1\
+      &&"alert"                           ]?(a=0+0\
+      )  ||alert:1     &&this["p"+     "rint"]?(  \
+       1  &&print):console.log,u=unescape,q=u((  \
+       0    ||"%27")),f=Function,x=f("t,n","v    \
+        = [];while(n--)v+=t;return"+(s=u("%20") \
+        )+"v"),n=u("%0a"),r=[45,95,145,194,243,1\
+        +290,339,387,436,486,537,589,642,695,749\
+       ,53 +750,858,913,969];for(i=19;i--;)$a= $a\
+      [(e ="replace")](RegExp(".{"+r[i]+"}"),"" +(\
+     "$&" )+(b=     u("%5c"))+n);if(a     ){c=[ 5,(\
+    45), 5,55,    2, 31,58,43,2,31,(    58 ),53, 1,(\
+   30),( 86),(       58),43,1,30,86,       58,53 ,5,(\
+   45),5 ,28],o     =521;for(i=26;i--     ;){$a= $a[e\
+  ](($a) .substr(0,o+c[i]%28),"$&"+u("%1b")+"["+ (d=[(\
+  "0"),( "48;5;9"),"48;5;1","48;5;15"][Math["fl" +"oo"\
+ +"r"](c[ i]/28)])+"m");  ;   o  +=c[i]%28+3+d. length}\
+ };p(x(s   ,5)+"eval"+x(s   ,   39)+"($a="+n+x   (s,5)+\
+q+$a+q+n    +"."+e+x(s,11)+"(/"+b+("x1b")+b+(    "[.*?"+\
+"m/mig,"       +"/*")+x(s,11)+"qb*/"+q+q+(       "))"));'
+.replace           (/\x1b\[.*?m/mig,/*           qb*/''))
+      </code></pre>
+      <blockquote>
+        元ネタ：<br />
+        <a href="http://d.hatena.ne.jp/ku-ma-me/20110405/p1">http://d.hatena.ne.jp/ku-ma-me/20110405/p1</a>
+      </blockquote>
+    </div>
+
+    <div class="slide">
+      <h2>qb.js</h2>
+      <pre style="font-size: x-small; letter-spacing: 0; line-height: 1.2em;"><code>$ node qb.js
+     eval                                       ($a=
+     'a=1;p=                                 this[1\
+      &&"alert"                           ]?(a=0+0\
+      )  ||alert:1     &&this["p"+     "rint"]?(  \
+       1  &&print):console.log,u=unescape,q=u((  \
+       0    ||"%27")),f=Function,x=f("t,n","v    \
+        = [];while(n--)v+=t;return"+(s=u("%20") \
+        )+"v"),n=u("%0a"),r=[45,95,145,194,243,1\
+        +290,339,387,436,486,537,589,642,695,749\
+       ,53 +750,858,913,969];for(i=19;i--;)$a= $a\
+      [(e ="replace")](RegExp(".{"+r[i]+"}"),"" +(\
+     "$&" )+(b=</code><code style="background-color:#FF5555;">     </code><code>u("%5c"))+n);if(a</code><code style="background-color:#FF5555;">     </code><code>){c=[ 5,(\
+    45), 5,55,</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">2,</code><code><code style="background-color:#FF5555"> </code>31,58,43,2,31,(</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">58</code><code style="background-color:#FF5555"> </code><code>),53, 1,(\
+   30),( 86),(</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>58),43,1,30,86,</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>58,53 ,5,(\
+   45),5 ,28],o</code><code style="background-color:#FF5555;">     </code><code>=521;for(i=26;i--</code><code style="background-color:#FF5555;">     </code><code>;){$a= $a[e\
+  ](($a) .substr(0,o+c[i]%28),"$&"+u("%1b")+"["+ (d=[(\
+  "0"),( "48;5;9"),"48;5;1","48;5;15"][Math["fl" +"oo"\
+ +"r"](c[ i]/28)])+"m");  ;   o  +=c[i]%28+3+d. length}\
+ };p(x(s   ,5)+"eval"+x(s   ,   39)+"($a="+n+x   (s,5)+\
+q+$a+q+n    +"."+e+x(s,11)+"(/"+b+("x1b")+b+(    "[.*?"+\
+"m/mig,"       +"/*")+x(s,11)+"qb*/"+q+q+(       "))"));'
+.replace           (/\x1b\[.*?m/mig,/*           qb*/''))
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>qb.js</h2>
+      <pre><code>$ cat qb.js
+$ js qb.js
+$ node qb.js
+$ cat qb.js | js
+$ cat qb.js | js | js
+      </code></pre>
+      <blockquote>Nodeでパイプ入力はv0.5から？</blockquote>
+    </div>
+
+    <div class="slide">
+      <br /><br />
+      <div class="titlepage">
+        <p>Thank you for your attention.</p>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div id="header"></div>
+      <div id="footer">
+        <div id="profile">
+          <p>id:sugyan</p>
+          <p><a href="http://sugyan.com/">http://sugyan.com/</a>, sugi1982@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/slideshow.js"></script>
+  </body>
+</html>
