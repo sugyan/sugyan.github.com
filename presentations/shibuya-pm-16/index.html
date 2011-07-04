@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shibuya.pm #16 LT</title>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/slide.css" />
+  </head>
+  <body>
+
+    <div class="slide">
+      <h1>僕と契約して、(ry</h1>
+      <div class="titlepage">
+        <p>Jul 6, 2011</p>
+        <p>Shibuya.pm #16</p>
+        <p>id:sugyan</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h2>self-introduction</h2>
+    <pre>
+<span class="keyword">my</span> <span class="variable-name">$profile</span> = +{
+    <span class="string">id</span>   =&gt; <span class="string">'sugyan'</span>,
+    <span class="string">name</span> =&gt; <span class="string">'&#12377;&#12366;&#12419;&#12540;&#12435;'</span>,
+    <span class="string">age</span>  =&gt; 0x1C,
+    <span class="string">lang</span> =&gt; [<span class="string">'Perl'</span>, <span class="string">'Node.js'</span>, <span class="string">'Objective-C'</span>],
+};
+</pre>
+    </div>
+
+    <div class="slide">
+      <h2>Quine ruBy</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>     eval                                       s||=
+     %q(1;t=                                 %w(s.gs
+      ub!(/\e.*                           ?m/,"");[
+      [  0x26e885c     a844a879e27     a,519,48,  5
+       ,  9],[20182686,600,48,5,1],[4366,611,48  ,
+       5    ,15],[432803624050570,533,0]].map    {
+        | r,m,*d|s[m+=r%74,0],r="\e[#{d*";"}m", r
+        /74while(r&gt;0)};puts((z=32.chr)*5+"eval#{z
+        *39}s||=\n#{z*5}%q(#{(1+n=s.to_i)%3}#{s[1
+       ..- 1]})\n\n"+z*9*n+"5YOV44GvUnVieWlzdO OBq
+      +OB quOBo+OBpuOBj+OCjOOBo+OBpuOAgeOBjeOBo eOC
+     k+OB qOOBi     umhmOOBhOOBl+OBn+     OBr+O BmuO
+    BoOO CiO+8    nw ogIOWun+mam+OBr    ui ogOiq nuS7
+   leanm OOBjO       OBqeOBhuOBhOOBh       uOCgu OBruO
+   Bi+OA geiqrO     aYjuOCkuecgeeVpeO     Bl+OBn +OBke
+  OCjOOB qeOAgi/lg5XjgajlpZHntITjgZfjgabjgIFSdWJ 5aXN04
+  4Gr44G q44Gj44Gm5qyy44GX44GE44KT44GgL+WQm+OBn+ OBoeOB
+ r+OBhOOB pOOCguOBneOBhu  O   B  oOOBreOAggrkup Lmj5vmgK
+ fjgafjg   4/jg57jgovjgaj   m   sbrjgb7jgaPjga   blkIzjg
+Zjlj43lv    5zjgpLjgZnjgovjgILoqLPjgYzliIbjgY    vjgonjga
+rjgYTjgo       g=".gsub(/\e.*?m/,"").unpac       k("m")[0
+].split(           "/")[n]);exit)*"";;           eval(t))
+      </code></pre>
+      <p style="font-size:small;text-align:right;"><a href="http://d.hatena.ne.jp/ku-ma-me/20110405/p1" target="_blank">http://d.hatena.ne.jp/ku-ma-me/20110405/p1</a></p>
+    </div>
+
+    <div class="slide">
+      <h2>Quine ruBy</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ cat qb.rb
+     eval                                       s||=
+     %q(1;t=                                 %w(s.gs
+      ub!(/\e.*                           ?m/,"");[
+      [  0x26e885c     a844a879e27     a,519,48,  5
+       ,  9],[20182686,600,48,5,1],[4366,611,48  ,
+       5    ,15],[432803624050570,533,0]].map    {
+        | r,m,*d|s[m+=r%74,0],r="\e[#{d*";"}m", r
+        /74while(r&gt;0)};puts((z=32.chr)*5+"eval#{z
+        *39}s||=\n#{z*5}%q(#{(1+n=s.to_i)%3}#{s[1
+       ..- 1]})\n\n"+z*9*n+"5YOV44GvUnVieWlzdO OBq
+      +OB quOBo+OBpuOBj+OCjOOBo+OBpuOAgeOBjeOBo eOC
+     k+OB qOOBi     umhmOOBhOOBl+OBn+     OBr+O BmuO
+    BoOO CiO+8    nw ogIOWun+mam+OBr    ui ogOiq nuS7
+   leanm OOBjO       OBqeOBhuOBhOOBh       uOCgu OBruO
+   Bi+OA geiqrO     aYjuOCkuecgeeVpeO     Bl+OBn +OBke
+  OCjOOB qeOAgi/lg5XjgajlpZHntITjgZfjgabjgIFSdWJ 5aXN04
+  4Gr44G q44Gj44Gm5qyy44GX44GE44KT44GgL+WQm+OBn+ OBoeOB
+ r+OBhOOB pOOCguOBneOBhu  O   B  oOOBreOAggrkup Lmj5vmgK
+ fjgafjg   4/jg57jgovjgaj   m   sbrjgb7jgaPjga   blkIzjg
+Zjlj43lv    5zjgpLjgZnjgovjgILoqLPjgYzliIbjgY    vjgonjga
+rjgYTjgo       g=".gsub(/\e.*?m/,"").unpac       k("m")[0
+].split(           "/")[n]);exit)*"";;           eval(t))
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Quine ruBy</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ ruby-1.9.2-p180 qb.rb
+     eval                                       s||=
+     %q(2;t=                                 %w(s.gs
+      ub!(/\e.*                           ?m/,"");[
+      [  0x26e885c     a844a879e27     a,519,48,  5
+       ,  9],[20182686,600,48,5,1],[4366,611,48  ,
+       5    ,15],[432803624050570,533,0]].map    {
+        | r,m,*d|s[m+=r%74,0],r="\e[#{d*";"}m", r
+        /74while(r&gt;0)};puts((z=32.chr)*5+"eval#{z
+        *39}s||=\n#{z*5}%q(#{(1+n=s.to_i)%3}#{s[1
+       ..- 1]})\n\n"+z*9*n+"5YOV44GvUnVieWlzdO OBq
+      +OB quOBo+OBpuOBj+OCjOOBo+OBpuOAgeOBjeOBo eOC
+     k+OB qOOBi</code><code style="background-color:#FF5555;">     </code><code>umhmOOBhOOBl+OBn+</code><code style="background-color:#FF5555;">     </code><code>OBr+O BmuO
+    BoOO CiO+8</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">nw</code><code style="background-color:#FF5555;"> </code><code>ogIOWun+mam+OBr</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">ui</code><code style="background-color:#FF5555;"> </code><code>ogOiq nuS7
+   leanm OOBjO</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>OBqeOBhuOBhOOBh</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>uOCgu OBruO
+   Bi+OA geiqrO</code><code style="background-color:#FF5555;">     </code><code>aYjuOCkuecgeeVpeO</code><code style="background-color:#FF5555;">     </code><code>Bl+OBn +OBke
+  OCjOOB qeOAgi/lg5XjgajlpZHntITjgZfjgabjgIFSdWJ 5aXN04
+  4Gr44G q44Gj44Gm5qyy44GX44GE44KT44GgL+WQm+OBn+ OBoeOB
+ r+OBhOOB pOOCguOBneOBhu  O   B  oOOBreOAggrkup Lmj5vmgK
+ fjgafjg   4/jg57jgovjgaj   m   sbrjgb7jgaPjga   blkIzjg
+Zjlj43lv    5zjgpLjgZnjgovjgILoqLPjgYzliIbjgY    vjgonjga
+rjgYTjgo       g=".gsub(/\e.*?m/,"").unpac       k("m")[0
+].split(           "/")[n]);exit)*"";;           eval(t))
+
+         </code><span style="font-size:115%;">僕と契約して、Rubyistになって欲しいんだ</span></code>
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Quine ruBy</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ ruby-1.9.2-p180 qb.rb | ruby-1.9.2-p180
+     eval                                       s||=
+     %q(0;t=                                 %w(s.gs
+      ub!(/\e.*                           ?m/,"");[
+      [  0x26e885c     a844a879e27     a,519,48,  5
+       ,  9],[20182686,600,48,5,1],[4366,611,48  ,
+       5    ,15],[432803624050570,533,0]].map    {
+        | r,m,*d|s[m+=r%74,0],r="\e[#{d*";"}m", r
+        /74while(r&gt;0)};puts((z=32.chr)*5+"eval#{z
+        *39}s||=\n#{z*5}%q(#{(1+n=s.to_i)%3}#{s[1
+       ..- 1]})\n\n"+z*9*n+"5YOV44GvUnVieWlzdO OBq
+      +OB quOBo+OBpuOBj+OCjOOBo+OBpuOAgeOBjeOBo eOC
+     k+OB qOOBi</code><code style="background-color:#FF5555;">     </code><code>umhmOOBhOOBl+OBn+</code><code style="background-color:#FF5555;">     </code><code>OBr+O BmuO
+    BoOO CiO+8</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">nw</code><code style="background-color:#FF5555;"> </code><code>ogIOWun+mam+OBr</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">ui</code><code style="background-color:#FF5555;"> </code><code>ogOiq nuS7
+   leanm OOBjO</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>OBqeOBhuOBhOOBh</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>uOCgu OBruO
+   Bi+OA geiqrO</code><code style="background-color:#FF5555;">     </code><code>aYjuOCkuecgeeVpeO</code><code style="background-color:#FF5555;">     </code><code>Bl+OBn +OBke
+  OCjOOB qeOAgi/lg5XjgajlpZHntITjgZfjgabjgIFSdWJ 5aXN04
+  4Gr44G q44Gj44Gm5qyy44GX44GE44KT44GgL+WQm+OBn+ OBoeOB
+ r+OBhOOB pOOCguOBneOBhu  O   B  oOOBreOAggrkup Lmj5vmgK
+ fjgafjg   4/jg57jgovjgaj   m   sbrjgb7jgaPjga   blkIzjg
+Zjlj43lv    5zjgpLjgZnjgovjgILoqLPjgYzliIbjgY    vjgonjga
+rjgYTjgo       g=".gsub(/\e.*?m/,"").unpac       k("m")[0
+].split(           "/")[n]);exit)*"";;           eval(t))
+
+                  </code><span style="font-size:115%;">君たちはいつもそうだね。
+互換性でハマると決まって同じ反応をする。訳が分からないよ</span><code>
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Quine ruBy</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ ruby-1.9.2-p180 qb.rb | ruby-1.9.2-p180 | ruby-1.9.2-p180
+     eval                                       s||=
+     %q(1;t=                                 %w(s.gs
+      ub!(/\e.*                           ?m/,"");[
+      [  0x26e885c     a844a879e27     a,519,48,  5
+       ,  9],[20182686,600,48,5,1],[4366,611,48  ,
+       5    ,15],[432803624050570,533,0]].map    {
+        | r,m,*d|s[m+=r%74,0],r="\e[#{d*";"}m", r
+        /74while(r&gt;0)};puts((z=32.chr)*5+"eval#{z
+        *39}s||=\n#{z*5}%q(#{(1+n=s.to_i)%3}#{s[1
+       ..- 1]})\n\n"+z*9*n+"5YOV44GvUnVieWlzdO OBq
+      +OB quOBo+OBpuOBj+OCjOOBo+OBpuOAgeOBjeOBo eOC
+     k+OB qOOBi</code><code style="background-color:#FF5555;">     </code><code>umhmOOBhOOBl+OBn+</code><code style="background-color:#FF5555;">     </code><code>OBr+O BmuO
+    BoOO CiO+8</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">nw</code><code style="background-color:#FF5555;"> </code><code>ogIOWun+mam+OBr</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">ui</code><code style="background-color:#FF5555;"> </code><code>ogOiq nuS7
+   leanm OOBjO</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>OBqeOBhuOBhOOBh</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>uOCgu OBruO
+   Bi+OA geiqrO</code><code style="background-color:#FF5555;">     </code><code>aYjuOCkuecgeeVpeO</code><code style="background-color:#FF5555;">     </code><code>Bl+OBn +OBke
+  OCjOOB qeOAgi/lg5XjgajlpZHntITjgZfjgabjgIFSdWJ 5aXN04
+  4Gr44G q44Gj44Gm5qyy44GX44GE44KT44GgL+WQm+OBn+ OBoeOB
+ r+OBhOOB pOOCguOBneOBhu  O   B  oOOBreOAggrkup Lmj5vmgK
+ fjgafjg   4/jg57jgovjgaj   m   sbrjgb7jgaPjga   blkIzjg
+Zjlj43lv    5zjgpLjgZnjgovjgILoqLPjgYzliIbjgY    vjgonjga
+rjgYTjgo       g=".gsub(/\e.*?m/,"").unpac       k("m")[0
+].split(           "/")[n]);exit)*"";;           eval(t))
+
+</code><span style="font-size:115%;">僕はRubyistになってくれって、きちんとお願いしたはずだよ？
+  実際の言語仕様がどういうものか、説明を省略したけれど。</span><code>
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Perl版 作りました</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>     eval                                       (($q
+     ||=q{1;                                 $b=qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+exit}));           BEGIN{$^H|=0x800000           }eval$b;
+      </code></pre>
+      <p style="font-size:small;text-align:right;"><a href="http://d.hatena.ne.jp/sugyan/20110415/1302802885" target="_blank">http://d.hatena.ne.jp/sugyan/20110415/1302802885</a></p>
+    </div>
+
+    <div class="slide">
+      <h2>Perl版 作りました</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ cat qb.pl
+     eval                                       (($q
+     ||=q{1;                                 $b=qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+exit}));           BEGIN{$^H|=0x800000           }eval$b;
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Perl版 作りました</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ perl qb.pl
+     eval                                       (($q
+     ||=q{0;                                 $b=qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61</code><code style="background-color:#FF5555;">     </code><code>Y[2$XX&7XX&F4&5R;</code><code style="background-color:#FF5555;">     </code><code>$UO;F =E&lt;N
+    .!J^ .!JN.</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">!H</code><code style="background-color:#FF5555;"> </code><code>^.!MIN:LLN.!E^.</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">!A</code><code style="background-color:#FF5555;"> </code><code>.."D^ .!H"
+   P@("` @("`@</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>("`@("`@("#ED)O</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>C@9_C @:\'C
+   @:_CM @83C@:</code><code style="background-color:#FF5555;">     </code><code>3C@H+C@9WC@8;C@:#</code><code style="background-color:#FF5555;">     </code><code>C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+exit}));           BEGIN{$^H|=0x800000           }eval$b;
+
+      </code><span style="font-size:115%;">僕と契約してPerlMongerになって欲しいんだ</span><code>
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Perl版 作りました</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ perl qb.pl | perl
+     eval                                       (($q
+     ||=q{1;                                 $b=qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61</code><code style="background-color:#FF5555;">     </code><code>Y[2$XX&7XX&F4&5R;</code><code style="background-color:#FF5555;">     </code><code>$UO;F =E&lt;N
+    .!J^ .!JN.</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">!H</code><code style="background-color:#FF5555;"> </code><code>^.!MIN:LLN.!E^.</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">!A</code><code style="background-color:#FF5555;"> </code><code>.."D^ .!H"
+   P@("` @("`@</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>("`@("`@("#ED)O</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>C@9_C @:\'C
+   @:_CM @83C@:</code><code style="background-color:#FF5555;">     </code><code>3C@H+C@9WC@8;C@:#</code><code style="background-color:#FF5555;">     </code><code>C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+exit}));           BEGIN{$^H|=0x800000           }eval$b;
+
+               </code><span style="font-size:115%;">君たちはいつもそうだね
+TMTOWTDIといって可読性の低いコードを書く.訳が分からないよ</span><code>
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>JavaScript版</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>     eval                                       ($a=
+     'a=1;p=                                 this[1\
+      &&"alert"                           ]?(a=0+0\
+      )  ||alert:1     &&this["p"+     "rint"]?(  \
+       1  &&print):console.log,u=unescape,q=u((  \
+       0    ||"%27")),f=Function,x=f("t,n","v    \
+        = [];while(n--)v+=t;return"+(s=u("%20") \
+        )+"v"),n=u("%0a"),r=[45,95,145,194,243,1\
+        +290,339,387,436,486,537,589,642,695,749\
+       ,53 +750,858,913,969];for(i=19;i--;)$a= $a\
+      [(e ="replace")](RegExp(".{"+r[i]+"}"),"" +(\
+     "$&" )+(b=     u("%5c"))+n);if(a     ){c=[ 5,(\
+    45), 5,55,    2, 31,58,43,2,31,(    58 ),53, 1,(\
+   30),( 86),(       58),43,1,30,86,       58,53 ,5,(\
+   45),5 ,28],o     =521;for(i=26;i--     ;){$a= $a[e\
+  ](($a) .substr(0,o+c[i]%28),"$&"+u("%1b")+"["+ (d=[(\
+  "0"),( "48;5;9"),"48;5;1","48;5;15"][Math["fl" +"oo"\
+ +"r"](c[ i]/28)])+"m");  ;   o  +=c[i]%28+3+d. length}\
+ };p(x(s   ,5)+"eval"+x(s   ,   39)+"($a="+n+x   (s,5)+\
+q+$a+q+n    +"."+e+x(s,11)+"(/"+b+("x1b")+b+(    "[.*?"+\
+"m/mig,"       +"/*")+x(s,11)+"qb*/"+q+q+(       "))"));'
+.replace           (/\x1b\[.*?m/mig,/*           qb*/''))
+      </code></pre>
+      <p style="font-size:small;text-align:right;"><a href="http://d.hatena.ne.jp/sugyan/20110519/1305780500" target="_blank">http://d.hatena.ne.jp/sugyan/20110519/1305780500</a></p>
+    </div>
+
+    <div class="slide">
+      <h2>JavaScript版</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code>$ js qb.js
+     eval                                       ($a=
+     'a=1;p=                                 this[1\
+      &&"alert"                           ]?(a=0+0\
+      )  ||alert:1     &&this["p"+     "rint"]?(  \
+       1  &&print):console.log,u=unescape,q=u((  \
+       0    ||"%27")),f=Function,x=f("t,n","v    \
+        = [];while(n--)v+=t;return"+(s=u("%20") \
+        )+"v"),n=u("%0a"),r=[45,95,145,194,243,1\
+        +290,339,387,436,486,537,589,642,695,749\
+       ,53 +750,858,913,969];for(i=19;i--;)$a= $a\
+      [(e ="replace")](RegExp(".{"+r[i]+"}"),"" +(\
+     "$&" )+(b=</code><code style="background-color:#FF5555;">     </code><code>u("%5c"))+n);if(a</code><code style="background-color:#FF5555;">     </code><code>){c=[ 5,(\
+    45), 5,55,</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">2,</code><code style="background-color:#FF5555;"> </code>31,58,43,2,31,(</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">  </code><code style="background-color:#FFFFFF;">58</code><code style="background-color:#FF5555;"> </code><code>),53, 1,(\
+   30),( 86),(</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>58),43,1,30,86,</code><code style="background-color:#FF5555;">  </code><code style="background-color:#FF0000;">   </code><code style="background-color:#FF5555;">  </code><code>58,53 ,5,(\
+   45),5 ,28],o</code><code style="background-color:#FF5555;">     </code><code>=521;for(i=26;i--</code><code style="background-color:#FF5555;">     </code><code>;){$a= $a[e\
+  ](($a) .substr(0,o+c[i]%28),"$&"+u("%1b")+"["+ (d=[(\
+  "0"),( "48;5;9"),"48;5;1","48;5;15"][Math["fl" +"oo"\
+ +"r"](c[ i]/28)])+"m");  ;   o  +=c[i]%28+3+d. length}\
+ };p(x(s   ,5)+"eval"+x(s   ,   39)+"($a="+n+x   (s,5)+\
+q+$a+q+n    +"."+e+x(s,11)+"(/"+b+("x1b")+b+(    "[.*?"+\
+"m/mig,"       +"/*")+x(s,11)+"qb*/"+q+q+(       "))"));'
+.replace           (/\x1b\[.*?m/mig,/*           qb*/''))
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Quine</h2>
+      <h3>クワイン (プログラミング)</h3>
+      <blockquote>クワイン（英: Quine）は、コンピュータプログラムにおけるメタプログラミングの一形態であり、自身の完全なソースコードだけを出力するプログラムである。</blockquote>
+      <p style="font-size:small;text-align:right;"><a href="http://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AF%E3%82%A4%E3%83%B3_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)" target="_blank">http://ja.wikipedia.org/wiki/クワイン_(プログラミング)</a></p>
+    </div>
+
+    <div class="slide">
+      <h2>Quineの基礎</h2>
+      <p>
+        <pre>$_=<span class="cperl-nonoverridable">q</span><span class="string">{print"\$_=q{$_};eval"}</span>;<span class="keyword">eval</span></pre>
+      </p>
+      <p>もしくは</p>
+      <p>
+        <pre><span class="keyword">eval</span>($_=<span class="cperl-nonoverridable">q</span><span class="string">{print"eval(\$_=q{$_})"}</span>)</pre>
+      </p>
+    </div>
+
+    <div class="slide">
+      <h2>Quineの基礎</h2>
+      <p>
+        <pre>$_=<span class="cperl-nonoverridable">q</span><span class="string">{
+# &#65340;(^o^)&#65295;
+my $hoge = 3.141592;
+
+print"\$_=q{$_};eval"}</span>;<span class="keyword">eval</span>
+        </pre>
+      </p>
+      <p>一部を除き自由に書ける</p>
+    </div>
+
+    <div class="slide">
+      <h2>eval + print</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code style="color:#00FF00;">     eval                                       (($q
+     ||=q{</code><code style="color:#FFA07A;">1;                                 $b=qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+exit</code><code style="color:#00FF00;">}))</code><code style="color:#808080;">;           BEGIN{$^H|=0x800000           }eval$b;
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>eval + print</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code style="color:#808080;">     eval                                       (($q
+     ||=q{1;                                 </code><code style="color:#00FF00;">$b=</code><code>qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;</code><code style="color:#00FF00;">print</code><code style="color:#FFA07A;">((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."</code><code style="color:#00FF00;">$b</code><code style="color:#FFA07A;">".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+</code><code style="color:#808080;">exit}));           BEGIN{$^H|=0x800000           }eval$b;
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>coloring</h2>
+      <p>ANSI escape code</p>
+      <pre><code>$ perl -E'say &quot;foo</code><code style="font-weight:bold;">\e[32m</code><code>bar</code><code style="font-weight:bold;">\e[m</code><code>baz&quot;'
+foo</code><code style="color:#00FF00;">bar</code><code>baz
+
+$ perl -E'say &quot;foo</code><code style="font-weight:bold;">\e[42,30m</code><code>bar</code><code style="font-weight:bold;">\e[m</code><code>baz&quot;'
+foo</code><code style="color:#000000;background-color:#00FF00">bar</code><code>baz
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>coloring</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code style="color:#808080;">     eval                                       (($q
+     ||=q{1;                                 $b=</code><code>qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;</code><code style="color:#00FF00;">for(</code><code>28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5</code><code style="color:#00FF00;">){</code><code>$~=(</code><code style="color:#FFA07A;">0</code><code>,</code><code style="color:#FFA07A;">"48;5;9"</code><code>,</code><code style="color:#FFA07A;">"48;5;1"</code><code>,</code><code style="color:#FFA07A;">"48;5"</code><code>
+        .</code><code style="color:#FFA07A;">";15"</code><code>)[$_/28];substr($b,517+$i+($_%28),0
+       ,() .</code><code style="color:#FFA07A;">"\e[$~m"</code><code>);$i+=length($~)+3+($_%28) </code><code style="color:#00FF00;">}</code><code>;(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;</code><code style="color:#808080;">print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+</code><code>exit</code><code style="color:#808080;">}))</code><code>;           BEGIN{$^H|=0x800000           }</code><code style="color:#808080;">eval$b;
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>uuencode</h2>
+      <pre>$ perl -E 'say pack("u", "僕と契約して")'
+2Y8.5XX&HY:61Y[2$XX&7XX&F
+
+$ perl -E 'say unpack("u", "2Y8.5XX&HY:61Y[2\$XX&7XX&F")'
+僕と契約して
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>uuencode</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code style="color:#808080;">     eval                                       (($q
+     ||=q{1;                                 $b=</code><code>qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;(</code><code style="color:#00FF00;">$qb</code><code>=</code><code style="color:#FFA07A;">'M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *('</code><code>)</code><code style="color:#808080;">=~s/ \x20|\x0a|\e.*  ?   m  //xg;print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,</code><code style="color:#00FF00;">unpack+q"u",$qb</code><code>))[$n       ]."\n");
+exit}))</code><code>;           BEGIN{$^H|=0x800000           }</code><code style="color:#808080;">eval$b;
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>use utf8;</h2>
+      <pre>$ echo 'ほげ' | perl
+Unrecognized character \xE3 in column 1 at - line 1.
+$ echo 'ほげ' | perl -Mutf8
+$
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>use utf8;</h2>
+      <pre>
+<span class="keyword">package</span> <span class="function-name">utf8</span>;
+
+$utf8::hint_bits = 0x00800000;
+
+<span class="keyword">sub</span> <span class="function-name">import</span> {
+    $^H |= $utf8::hint_bits;
+    <span class="cperl-hash"><span class="flymake-errline">$enc</span></span><span class="flymake-errline">{</span><span class="type"><span class="flymake-errline">caller</span></span><span class="flymake-errline">()} = </span><span class="cperl-array"><span class="flymake-errline">$_</span></span><span class="flymake-errline">[1] </span><span class="keyword"><span class="flymake-errline">if</span></span><span class="flymake-errline"> </span><span class="cperl-array"><span class="flymake-errline">$_</span></span><span class="flymake-errline">[1];</span>
+}
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>use utf8;</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code style="color:#808080;">     eval                                       (($q
+     ||=q{1;                                 $b=qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));$b=~s/\e\[.*  ?
+       m    //xg;for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;($qb='M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *(')=~s/ \x20|\x0a|\e.*  ?   m  //xg;print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+exit}));           </code><code style="color:#00FF00;">BEGIN{$^H|=0x800000           }</code><code style="color:#808080;">eval$b;
+      </code></pre>
+      <p>なんとなく"use utf8"って書きたくなかった
+    </div>
+
+    <div class="slide">
+      <h2>整形</h2>
+      <h3>無駄に分割する</h3>
+      <pre>**** *  ****
+chr(32)</pre>
+      <p>↓</p>
+      <pre><code>**** *  ****
+chr( </code><code style="color:#00FF00;">2  +30</code><code>)
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>整形</h2>
+      <h3>無駄に分割する</h3>
+      <pre>*** ******
+"eval"
+      </pre>
+      <pre><code>*** ******
+</code><code style="color:#00FF00;">"e"</code><code> .</code><code style="color:#00FF00;">"val"
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>整形</h2>
+      <h3>無駄に括る</h3>
+      <pre>* * *****
+43,</pre>
+      <p>↓</p>
+      <pre><code>* * *****
+</code><code style="color:#00FF00;">( (</code><code> 43</code><code style="color:#00FF00;">))</code><code>,
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>整形</h2>
+      <h3>無駄に変換する</h3>
+      <pre>***********************
+"{$b;\n"
+      </pre>
+      <p>↓</p>
+      <pre><code>***********************
+</code><code style="color:#00FF00;">&quot;\x7b&quot;</code><code>.&quot;$b&quot;.</code><code style="color:#00FF00;">('`%'^'[/')
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>整形</h2>
+      <h3>無駄に字数を稼ぐ</h3>
+      <pre>** * **************</pre>
+      <p>↓</p>
+      <pre><code>** * **************
+(' q '?</code><code style="color:#00FF00;">&quot;&quot;</code><code>:q{b}x999)
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>正規表現！</h2>
+      <pre style="font-size:small;letter-spacing:0;"><code style="color:#808080;">     eval                                       (($q
+     ||=q{1;                                 $b=qq{$
+      q\x7d))}.                           join(chr(
+      2  +30)x11,(     ";","BEGIN"     .'{$^H|='  .
+       (  "0x800000"),q"}eval$b"));</code><code>$b</code><code style="color:#FFFF00">=~s/\e\[.*  ?
+       m    //xg;</code><code style="color:#808080;">for(28,5,45,5,53,58,86,30,1,    (
+        ( 43)),58,86,30,1,53,58,31,2,43,58,31,2 ,
+        55,5,45,5){$~=(0,"48;5;9","48;5;1","48;5"
+        .";15")[$_/28];substr($b,517+$i+($_%28),0
+       ,() ."\e[$~m");$i+=length($~)+3+($_%28) };(
+      $n= ($q+1)%2);$b=~s/./$n/;</code><code>($qb=</code><code style="color:#FFA07A;">'M("`@("`@ Y8.
+     5XX& HY:61     Y[2$XX&7XX&F4&5R;     $UO;F =E&lt;N
+    .!J^ .!JN.    !H ^.!MIN:LLN.!E^.    !A .."D^ .!H"
+   P@("` @("`@       ("`@("`@("#ED)O       C@9_C @:\'C
+   @:_CM @83C@:     3C@H+C@9WC@8;C@:#     C@:T*5 $U43U
+  =41$GC @:CC@83C@:/C@:;ECZ_HMJJWF@*?C@:[DO8[C@8 3C@K/C
+  @[SC@X GC@I+FF[CC@8\NZ*BSXX&,Y8B&XX&+,XX*)XX&J XX&$XX
+ *('</code><code>)</code><code style="color:#FFFF00;">=~s/ \x20|\x0a|\e.*  ?   m  //xg;</code><code style="color:#808080;">print((q[ ]x5)."e"
+ ."val".   ("\x20"x39).('   q   '?"":q{b}x999)   .q'(($q
+'.($"x5)    .q{||=q}."\x7b"."$b".('`%'^'[/').    "\x0a".(
+split(qr       /\x2c/,unpack+q"u",$qb))[$n       ]."\n");
+exit}));           BEGIN{$^H|=0x800000           }eval$b;
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>まとめ</h2>
+      <ul>
+        <li>Quine書く</li>
+        <li>細工する</li>
+        <li>整形する</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <br /><br />
+      <div class="titlepage">
+        <p>Thank you for your attention.</p>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div id="header"></div>
+      <div id="footer">
+        <div id="profile">
+          <p>id:sugyan</p>
+          <p><a href="http://sugyan.com/">http://sugyan.com/</a>, sugi1982@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/slideshow.js"></script>
+  </body>
+</html>
