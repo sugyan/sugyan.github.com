@@ -106,3 +106,7 @@ pre .variable-name {
     /* font-lock-variable-name-face */
     color: #eedd82;
 }
+pre .cperl-nonoverridable {
+    /* cperl-nonoverridable-face */
+    color: #ff83fa;
+}

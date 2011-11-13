@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yokohama.pm #8 LT</title>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/slide.css" />
+  </head>
+  <body>
+
+    <div class="slide">
+      <h1>記号PerlでFizzBuzz</h1>
+      <div class="titlepage">
+        <p>Nov 18, 2011</p>
+        <p>Yokohama.pm #8</p>
+        <p>id:sugyan</p>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h2>Self-introduction</h2>
+    <pre>
+<span class="keyword">my</span> <span class="variable-name">$profile</span> = +{
+    <span class="string">id</span>   =&gt; <span class="string">'sugyan'</span>,
+    <span class="string">name</span> =&gt; <span class="string">'&#12377;&#12366;&#12419;&#12540;&#12435;'</span>,
+    <span class="string">age</span>  =&gt; 0x1C,
+    <span class="string">lang</span> =&gt; [<span class="string">'Perl'</span>, <span class="string">'Node.js'</span>],
+};
+</pre>
+    </div>
+
+    <div class="slide">
+      <h2>FizzBuzz</h2>
+      <blockquote>
+        Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz".
+      </blockquote>
+    </div>
+
+    <div class="slide">
+      <h1>My answer</h1>
+    </div>
+
+    <div class="slide">
+      <div style="height:100%;overflow:auto;">
+        <pre style="font-size:small;font-weight:bold;line-height:1.5em;margin:10px;">
+"^                                 "
+=~                                 (
+("(").("~"^"."^"^"^(""=="")."").("^"
+^"="^(""=="").""^")").("^"^".").("="
+^"~"^(""=="")."").("("^(""=="^").""^
+"."^"^").("("^(""=="").""^"^"^")").(
+("                  ^(             "
+                    ==             "
+                    ")             .
+                    ""             ^
+                    "(             "
+                 ^"."^""           ^
+                 "="^"~"           )
+                                  .(
+                                 "="
+                             ^"^"^("
+                             "=="^")
+."                  "^
+"~"^")"^".").("(").(("     "=="
+").""^")"^"^").("."^("    "=="")
+.""^"^"^"(").("^"^"("^     "="^
+("
+
+"               =="").
+"")             .(("^"
+=="").              ""
+^"="^"^"            ."
+"^"(").(")"         ).
+( "~"^(""=="        ")
+." "^"="^")")       .(
+"=     "^"("^(""    ==
+""       )."").("(  "^
+""          ."^"^")").
+((            ""=="").
+""^              ")"."
+"^"="              .""
+)               .("~"^
+"."             .""^"^
+"^"=")              .(
+"("^"="^"."         ^(
+"" =="^").""^       "~
+"^     ")").("."    ).
+""       .("(").""  .(
+""          ^"".""^"".
+""            ."("^"="
+^""              .")"^
+"~").              (("
+
+^~                                 "
+==                                 "
+").""^"."^"="^")"^"~").((""=="").""^
+"("^"^"^"=").("="^(""=="").""^"("^"^
+").(")").((""=="").""^")"^"~"^"=").(
+"="^(""=="").""^"(").("("^")"^"^").(
+"=                  "^             (
+""                  ==             "
+^~                  ^"             .
+""                  ."             ^
+~^                  ()            ^"
+ ).                "".            ""
+ ^""              ^")").        (""^
+ "("^"~        "^"=" ^"^").((""==""
+  ).""^"~"^"."^"("^   ")"^"=").(""
+   ^"."^"^"^"="^("      "=="^").
+     "").("="^"^          "^("
+
+                    ^"
+     =="").""^".").("=
+ "^"("^(""=="^")."").(
+ "^"^")"^"(").((""=="^
+~^").
+""^
+ ~(
+ ""
+  ).                ""
+."^"^""."= "^"~").((""
+=="").""^"="^"(").("."
+^"("^")").(")"^(""=="~
+")
+.               ""^"~"
+).(             "^"^("
+"=="^"              ).
+"").("".            "=
+"^"~"^(""==         "^
+") ."").("~"^       ""
+^(     "")."^").    ((
+""       =="")."")  .(
+""          ^".").("."
+).            ((""=="~
+").              "").(
+"."^(              "="
+
+)               ^"("^(
+"^"             )).("(
+"^")"^              ""
+."="^"~"            ^(
+"^")^".").(         ""
+^( ")")^(""==       ""
+).     ""^"("^""    ^(
+""       ^".")^"^"  ^(
+""          ."=")).(""
+^(            ")").(""
+^""              ^"".(
+"").""             )))
+        </pre>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h2>It works!</h2>
+      <pre><code>$ perl fizzbuzz.pl
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+...
+        </code>
+      </pre>
+      <p style="font-size:small;text-align:right;"><a href="http://d.hatena.ne.jp/sugyan/20110124/1295869696" target="_blank">http://d.hatena.ne.jp/sugyan/20110124/1295869696</a></p>
+    </div>
+
+    <div class="slide">
+      <h1>How it works?</h1>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>e.g. "Hello world!"</p>
+      <pre>
+<span class="string">''</span>=~(<span class="string">'(?{'</span>.
+(<span class="string">'+)).)^(%,,/@(/),$]!^'</span>^
+<span class="string">'[[@@]|`@@@@`_@[@@|+|'</span>).
+<span class="string">'})'</span>)
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>extended regular expression</p>
+      <pre>
+<span class="string">''</span>=~<span class="constant">/</span><span class="function-name">(?</span><span class="variable-name">{print "hoge\n"}</span><span class="function-name">)</span><span class="constant">/</span>
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>extended regular expression</p>
+      <pre>
+<span class="string">''</span>=~(<span class="string">'(?{'</span>.<span class="string">'print "hoge\n"'</span>.<span class="string">'})'</span>)
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>extended regular expression</p>
+      <pre>
+<span class="string">''</span>=~(<span class="string">'(?{'</span>.<span class="string" style="color:yellow;">'print "hoge\n"'</span>.<span class="string">'})'</span>)
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>XOR operator</p>
+      <table cellpadding="5" border="2" style="margin-left:1em;">
+        <tr align="center" style="border-bottom:solid orange;">
+          <th style="width:2.5em;">A</th>
+          <th style="width:2.5em;">B</th>
+          <th style="width:2.5em;">A^B</th>
+        </tr>
+        <tr align="center">
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr align="center">
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr align="center">
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr align="center">
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>XOR operator</p>
+      <table border="1" cellpadding="10" style="margin-left:1em;">
+        <tr>
+          <td></td>
+          <td><code>+ (&quot;\x2b&quot;)</td>
+          <td><code>0b00101010</code></td>
+        </tr>
+        <tr style="border-bottom:solid orange;">
+          <td></td>
+          <td><code>[ (&quot;\x5b&quot;)</td>
+          <td><code>0b01011010</code></td>
+        </tr>
+        <tr>
+          <td>^</td>
+          <td><code>p (&quot;\x70&quot;)</td>
+          <td><code>0b01110000</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>XOR operator</p>
+      <pre>
+<span class="cperl-nonoverridable">print</span>(<span class="string">'p'</span>);</pre>
+      <p>equals:</p>
+      <pre>
+<span class="cperl-nonoverridable">print</span>(<span class="string">'+'</span>^<span class="string">'['</span>);
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>XOR operator</p>
+      <pre>
+<span class="cperl-nonoverridable">print</span>(<span class="string">'print'</span>);</pre>
+      <p>equals:</p>
+      <pre>
+<span class="cperl-nonoverridable">print</span>(<span class="string">'+)).)'</span>^<span class="string">'[[@@]'</span>);
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h2>no Alphanumerics;</h2>
+      <p>XOR operator</p>
+      <pre>
+<span class="string">''</span>=~(<span class="string">'(?{'</span>.<span class="string" style="color:yellow;">'print "hoge\n"'</span>.<span class="string">'})'</span>)</pre>
+      <p>equals:</p>
+      <pre>
+<span class="string">''</span>=~(<span class="string">'(?{'</span>.(
+    <span class="string">'+)).)@^(/:%!.^'</span>^<span class="string">'[[@@]`|@@]@}@|'</span>
+).<span class="string">'})'</span>)
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>use Acme::EyeDrops;</h1>
+      <p>
+        <a href="http://search.cpan.org/~asavige/Acme-EyeDrops-1.55/lib/Acme/EyeDrops.pm" target="_blank">http://search.cpan.org/~asavige/Acme-EyeDrops-1.55/lib/Acme/EyeDrops.pm</a>
+      </p>
+    </div>
+
+    <div class="slide">
+      <h1>How many kinds of symbols it need?</h1>
+    </div>
+
+    <div class="slide">
+      <h2>minimum kinds of symbols</h2>
+      <ul>
+        <li><code style="color:#ffa07a;">'</code><code style="color:gray">(or &quot;)</code> : quote</li>
+        <li><code style="color:#ffa07a;">=</code><code style="color:gray">(or !)</code> : reqular expression</li>
+        <li><code style="color:#ffa07a;">~</code> : reqular expression, bitwise negation</li>
+        <li><code style="color:#ffa07a;">^</code> : exclusive disjunction</li>
+        <li><code style="color:#ffa07a;">.</code> : concatenation</li>
+        <li><code style="color:#ffa07a;">(</code> : parentheses</li>
+        <li><code style="color:#ffa07a;">)</code> : parentheses</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <div style="height:100%;overflow:auto;">
+        <pre style="font-size:smaller;margin:10px;">
+<span class="keyword">my</span> <span class="cperl-hash">%table</span> = (
+    <span class="string">&quot;\x00&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>),
+    <span class="string">&quot;\x01&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x02&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x03&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x04&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x05&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x06&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x07&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x08&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x09&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x0A&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x0B&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x0C&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x0D&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x0E&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x0F&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x10&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x11&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x12&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x13&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x14&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x15&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x16&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x17&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x18&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x19&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x1A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x1B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x1C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x1D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x1E&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x1F&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x20&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x21&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x22&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x23&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x24&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x25&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x26&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x27&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x28&quot;</span> =&gt; (<span class="string">'('</span>),
+    <span class="string">&quot;\x29&quot;</span> =&gt; (<span class="string">')'</span>),
+    <span class="string">&quot;\x2A&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x2B&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x2C&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x2D&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x2E&quot;</span> =&gt; (<span class="string">'.'</span>),
+    <span class="string">&quot;\x2F&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x30&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x31&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x32&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x33&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x34&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x35&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x36&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x37&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x38&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x39&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x3A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x3B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x3C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x3D&quot;</span> =&gt; (<span class="string">'='</span>),
+    <span class="string">&quot;\x3E&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x3F&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x40&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x41&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x42&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x43&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>),
+    <span class="string">&quot;\x44&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x45&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x46&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x47&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x48&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x49&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x4A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x4B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x4C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x4D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x4E&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x4F&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x50&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x51&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x52&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x53&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x54&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x55&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x56&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x57&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x58&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x59&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x5A&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x5B&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x5C&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x5D&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x5E&quot;</span> =&gt; (<span class="string">'^'</span>),
+    <span class="string">&quot;\x5F&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x60&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x61&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x62&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x63&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x64&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x65&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x66&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x67&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x68&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x69&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x6A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x6B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x6C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x6D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x6E&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x6F&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x70&quot;</span> =&gt; (<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x71&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x72&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x73&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x74&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x75&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x76&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x77&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x78&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x79&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x7A&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x7B&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x7C&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x7D&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x7E&quot;</span> =&gt; (<span class="string">'~'</span>),
+    <span class="string">&quot;\x7F&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x80&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x81&quot;</span> =&gt; ~(<span class="string">'~'</span>),
+    <span class="string">&quot;\x82&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x83&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x84&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x85&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x86&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x87&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x88&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x89&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x8A&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x8B&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x8C&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x8D&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x8E&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x8F&quot;</span> =&gt; ~(<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x90&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x91&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x92&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x93&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x94&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x95&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x96&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x97&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x98&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x99&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x9A&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x9B&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x9C&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x9D&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x9E&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\x9F&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xA0&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xA1&quot;</span> =&gt; ~(<span class="string">'^'</span>),
+    <span class="string">&quot;\xA2&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xA3&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xA4&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xA5&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xA6&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xA7&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xA8&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xA9&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\xAA&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xAB&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xAC&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xAD&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xAE&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xAF&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB0&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xB1&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xB2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xB5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xB6&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xB7&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xB8&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xB9&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xBA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xBB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xBC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>),
+    <span class="string">&quot;\xBD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xBE&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xBF&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xC0&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xC1&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xC2&quot;</span> =&gt; ~(<span class="string">'='</span>),
+    <span class="string">&quot;\xC3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xC4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xC5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xC6&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xC7&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xC8&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xC9&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xCA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xCB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xCC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xCD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xCE&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xCF&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xD0&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xD1&quot;</span> =&gt; ~(<span class="string">'.'</span>),
+    <span class="string">&quot;\xD2&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xD3&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xD4&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xD5&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xD6&quot;</span> =&gt; ~(<span class="string">')'</span>),
+    <span class="string">&quot;\xD7&quot;</span> =&gt; ~(<span class="string">'('</span>),
+    <span class="string">&quot;\xD8&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xD9&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xDA&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xDB&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xDC&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xDD&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xDE&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xDF&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE0&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xE1&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xE2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xE5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xE6&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xE7&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xE8&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xE9&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xEA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\xEB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xEC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xED&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xEE&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xEF&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xF0&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF1&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF2&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xF3&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xF4&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xF5&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xF6&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xF7&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xF8&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF9&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xFA&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xFB&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xFC&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xFD&quot;</span> =&gt; <span class="cperl-nonoverridable">undef</span>,
+    <span class="string">&quot;\xFE&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xFF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>),
+);
+        </pre>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>One more...</h1>
+    </div>
+
+    <div class="slide">
+      <h2>&quot;1&quot;</h2>
+      <code><pre>
+<span class="cperl-nonoverridable">print</span>(<span class="string">''</span>==<span class="string">''</span>);            <span class="comment-delimiter"># </span><span class="comment">=&gt; 1 (number)
+</span><span class="cperl-nonoverridable">print</span>((<span class="string">''</span>==<span class="string">''</span>)^<span class="string">'~'</span>);      <span class="comment-delimiter"># </span><span class="comment">=&gt; 1
+</span><span class="cperl-nonoverridable">print</span>((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>);       <span class="comment-delimiter"># </span><span class="comment">=&gt; "1" (string)
+</span><span class="cperl-nonoverridable">print</span>(((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)^<span class="string">'~'</span>); <span class="comment-delimiter"># </span><span class="comment">=&gt; "O"
+</span>
+        </pre></code>
+    </div>
+
+    <div class="slide">
+      <div style="height:100%;overflow:auto;">
+        <pre style="font-size:smaller;margin:10px;">
+<span class="keyword"><span class="flymake-errline">my</span></span><span class="flymake-errline"> </span><span class="cperl-hash"><span class="flymake-errline">%table</span></span><span class="flymake-errline"> = (</span>
+    <span class="string">&quot;\x00&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>),
+    <span class="string">&quot;\x01&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x02&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x03&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x04&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x05&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x06&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x07&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x08&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x09&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x0A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x0B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x0C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x0D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x0E&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x0F&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x10&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x11&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x12&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x13&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x14&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x15&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x16&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x17&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x18&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x19&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x1A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x1B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x1C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x1D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x1E&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x1F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x20&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x21&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x22&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x23&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x24&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x25&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x26&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x27&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x28&quot;</span> =&gt; (<span class="string">'('</span>),
+    <span class="string">&quot;\x29&quot;</span> =&gt; (<span class="string">')'</span>),
+    <span class="string">&quot;\x2A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x2B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x2C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x2D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x2E&quot;</span> =&gt; (<span class="string">'.'</span>),
+    <span class="string">&quot;\x2F&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x30&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x31&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x32&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x33&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x34&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x35&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x36&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x37&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x38&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x39&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x3A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x3B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x3C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x3D&quot;</span> =&gt; (<span class="string">'='</span>),
+    <span class="string">&quot;\x3E&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x3F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x40&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x41&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x42&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x43&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>),
+    <span class="string">&quot;\x44&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x45&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x46&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x47&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x48&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x49&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x4A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x4B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x4C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x4D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x4E&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x4F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x50&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x51&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x52&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x53&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x54&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x55&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x56&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x57&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x58&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x59&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x5A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x5B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x5C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x5D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x5E&quot;</span> =&gt; (<span class="string">'^'</span>),
+    <span class="string">&quot;\x5F&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x60&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x61&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x62&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x63&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x64&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x65&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x66&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x67&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x68&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x69&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x6A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x6B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x6C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x6D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x6E&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x6F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x70&quot;</span> =&gt; (<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x71&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x72&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x73&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x74&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x75&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x76&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x77&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x78&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x79&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x7A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x7B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x7C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x7D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x7E&quot;</span> =&gt; (<span class="string">'~'</span>),
+    <span class="string">&quot;\x7F&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x80&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x81&quot;</span> =&gt; ~(<span class="string">'~'</span>),
+    <span class="string">&quot;\x82&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x83&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x84&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x85&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x86&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x87&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x88&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x89&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x8A&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x8B&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x8C&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x8D&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x8E&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x8F&quot;</span> =&gt; ~(<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x90&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x91&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x92&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x93&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x94&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x95&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x96&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x97&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x98&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x99&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x9A&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x9B&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x9C&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x9D&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x9E&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\x9F&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xA0&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xA1&quot;</span> =&gt; ~(<span class="string">'^'</span>),
+    <span class="string">&quot;\xA2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xA3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xA4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xA5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xA6&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xA7&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xA8&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xA9&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\xAA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xAB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xAC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xAD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xAE&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xAF&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB0&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xB1&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xB2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xB5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xB6&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xB7&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xB8&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xB9&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xBA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xBB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xBC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>),
+    <span class="string">&quot;\xBD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xBE&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xBF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xC0&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xC1&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xC2&quot;</span> =&gt; ~(<span class="string">'='</span>),
+    <span class="string">&quot;\xC3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xC4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xC5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xC6&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xC7&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xC8&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xC9&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xCA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xCB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xCC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xCD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xCE&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xCF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xD0&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xD1&quot;</span> =&gt; ~(<span class="string">'.'</span>),
+    <span class="string">&quot;\xD2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xD3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xD4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xD5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xD6&quot;</span> =&gt; ~(<span class="string">')'</span>),
+    <span class="string">&quot;\xD7&quot;</span> =&gt; ~(<span class="string">'('</span>),
+    <span class="string">&quot;\xD8&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xD9&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xDA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xDB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xDC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xDD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xDE&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xDF&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE0&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xE1&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xE2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xE5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xE6&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xE7&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xE8&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xE9&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xEA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\xEB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xEC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xED&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xEE&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xEF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xF0&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF1&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xF3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xF4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xF5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xF6&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xF7&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xF8&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF9&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xFA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xFB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xFC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xFD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'1'</span>),
+    <span class="string">&quot;\xFE&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xFF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>),
+<span class="flymake-errline">);</span>
+        </pre>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div style="height:100%;overflow:auto;">
+        <pre style="font-size:smaller;margin:10px;">
+<span class="keyword">my</span> <span class="cperl-hash">%table</span> = (
+    <span class="string">&quot;\x00&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>),
+    <span class="string">&quot;\x01&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x02&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x03&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x04&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x05&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x06&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x07&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x08&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x09&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x0A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x0B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x0C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x0D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x0E&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x0F&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x10&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x11&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x12&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x13&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x14&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x15&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x16&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x17&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x18&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x19&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x1A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x1B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x1C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x1D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x1E&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x1F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x20&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x21&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x22&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x23&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x24&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x25&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x26&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x27&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x28&quot;</span> =&gt; (<span class="string">'('</span>),
+    <span class="string">&quot;\x29&quot;</span> =&gt; (<span class="string">')'</span>),
+    <span class="string">&quot;\x2A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x2B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x2C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x2D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x2E&quot;</span> =&gt; (<span class="string">'.'</span>),
+    <span class="string">&quot;\x2F&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x30&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x31&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x32&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x33&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x34&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x35&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x36&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x37&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x38&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x39&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x3A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x3B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x3C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x3D&quot;</span> =&gt; (<span class="string">'='</span>),
+    <span class="string">&quot;\x3E&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x3F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x40&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x41&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x42&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x43&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>),
+    <span class="string">&quot;\x44&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x45&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x46&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x47&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x48&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x49&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x4A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x4B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x4C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x4D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x4E&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x4F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x50&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x51&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x52&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x53&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x54&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x55&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x56&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x57&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x58&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x59&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x5A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x5B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x5C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x5D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x5E&quot;</span> =&gt; (<span class="string">'^'</span>),
+    <span class="string">&quot;\x5F&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x60&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x61&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x62&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x63&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x64&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x65&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x66&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x67&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x68&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x69&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x6A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x6B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x6C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x6D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x6E&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x6F&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x70&quot;</span> =&gt; (<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x71&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x72&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x73&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x74&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x75&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x76&quot;</span> =&gt; (<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x77&quot;</span> =&gt; (<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x78&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x79&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x7A&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x7B&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x7C&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x7D&quot;</span> =&gt; (<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x7E&quot;</span> =&gt; (<span class="string">'~'</span>),
+    <span class="string">&quot;\x7F&quot;</span> =&gt; (<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x80&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x81&quot;</span> =&gt; ~(<span class="string">'~'</span>),
+    <span class="string">&quot;\x82&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x83&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x84&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x85&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x86&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x87&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x88&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x89&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x8A&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x8B&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x8C&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x8D&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x8E&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x8F&quot;</span> =&gt; ~(<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x90&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x91&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x92&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x93&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x94&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\x95&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\x96&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x97&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x98&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x99&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x9A&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x9B&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\x9C&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x9D&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\x9E&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\x9F&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xA0&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xA1&quot;</span> =&gt; ~(<span class="string">'^'</span>),
+    <span class="string">&quot;\xA2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xA3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xA4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xA5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xA6&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xA7&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xA8&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xA9&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\xAA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xAB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xAC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xAD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xAE&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xAF&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB0&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xB1&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xB2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xB4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xB5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xB6&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xB7&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xB8&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xB9&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xBA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xBB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xBC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>),
+    <span class="string">&quot;\xBD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xBE&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xBF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xC0&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xC1&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xC2&quot;</span> =&gt; ~(<span class="string">'='</span>),
+    <span class="string">&quot;\xC3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xC4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xC5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xC6&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xC7&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xC8&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xC9&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xCA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xCB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xCC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xCD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xCE&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xCF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xD0&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xD1&quot;</span> =&gt; ~(<span class="string">'.'</span>),
+    <span class="string">&quot;\xD2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xD3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xD4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xD5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xD6&quot;</span> =&gt; ~(<span class="string">')'</span>),
+    <span class="string">&quot;\xD7&quot;</span> =&gt; ~(<span class="string">'('</span>),
+    <span class="string">&quot;\xD8&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xD9&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xDA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xDB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xDC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xDD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xDE&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xDF&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE0&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xE1&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xE2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xE4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xE5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xE6&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xE7&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xE8&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xE9&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xEA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>),
+    <span class="string">&quot;\xEB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xEC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xED&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xEE&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xEF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xF0&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF1&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF2&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">')'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xF3&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xF4&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xF5&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xF6&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xF7&quot;</span> =&gt; ~(<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>),
+    <span class="string">&quot;\xF8&quot;</span> =&gt; ~(<span class="string">')'</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xF9&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">'.'</span>),
+    <span class="string">&quot;\xFA&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xFB&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'^'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xFC&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xFD&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>)),
+    <span class="string">&quot;\xFE&quot;</span> =&gt; ~(<span class="string">'('</span>^<span class="string">')'</span>),
+    <span class="string">&quot;\xFF&quot;</span> =&gt; ~(<span class="string">'='</span>^<span class="string">'='</span>),
+);
+        </pre>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h2>7 symbols program</h2>
+      <p>"Hello world!"</p>
+      <div style="width:100%;overflow:auto;">
+        <pre><code>
+<span class="string">''</span>=~((<span class="string">'('</span>).(<span class="string">'~'</span>^<span class="string">'.'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'^'</span>).(<span class="string">'^'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">')'</span>^<span class="string">'='</span>).(<span class="string">'('</span>^<span class="string">'^'</span>^<span class="string">'='</span>^<span class="string">'.'</span>)
+.(<span class="string">'^'</span>^<span class="string">'('</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>^<span class="string">'~'</span>).(<span class="string">'('</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^<span class="string">')'</span>^<span class="string">'='</span>).(<span class="string">'.'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>).(
+<span class="string">'.'</span>^<span class="string">'^'</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'~'</span>^<span class="string">'='</span>).(<span class="string">'^'</span>^<span class="string">'('</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>).(<span class="string">'^'</span>^<span class="string">')'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^
+<span class="string">'('</span>).(<span class="string">'~'</span>^<span class="string">'='</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'('</span>^<span class="string">'.'</span>).(<span class="string">'.'</span>^<span class="string">'='</span>^<span class="string">'~'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>).(<span class="string">'='</span>^<span class="string">'.'</span>^(<span class="string">''</span>==<span class="string">''</span>).
+<span class="string">''</span>).(<span class="string">'~'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">')'</span>^<span class="string">'.'</span>).(<span class="string">'^'</span>^<span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>).(<span class="string">')'</span>^<span class="string">'('</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>).(<span class="string">'~'</span>^<span class="string">'('</span>^
+<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'='</span>).(<span class="string">'^'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>).(<span class="string">'^'</span>^<span class="string">'~'</span>).(<span class="string">'^'</span>^<span class="string">')'</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'^'</span>).(<span class="string">'~'</span>^(<span class="string">''</span>==
+<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>).(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'~'</span>).(<span class="string">'.'</span>^<span class="string">')'</span>^<span class="string">'='</span>^<span class="string">'^'</span>).(<span class="string">'('</span>^<span class="string">'~'</span>^<span class="string">')'</span>^<span class="string">'^'</span>).(<span class="string">'('</span>^<span class="string">'='</span>^
+<span class="string">'.'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>^<span class="string">'.'</span>).(<span class="string">'.'</span>^<span class="string">'='</span>^(<span class="string">''</span>==
+<span class="string">''</span>).<span class="string">''</span>).(<span class="string">'^'</span>^<span class="string">')'</span>^<span class="string">'='</span>^<span class="string">'('</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>).(<span class="string">')'</span>))
+          </code></pre>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h2>Acme::HeptaSymbolize</h2>
+      <p>
+        <a href="https://github.com/sugyan/Acme-HeptaSymbolize" target="_blank">https://github.com/sugyan/Acme-HeptaSymbolize</a>
+      </p>
+      <ul>
+        <li><a href="http://perl-users.jp/articles/advent-calendar/2010/sym/12" target="_blank">http://perl-users.jp/articles/advent-calendar/2010/sym/12</a></li>
+        <li><a href="http://perl-users.jp/articles/advent-calendar/2010/acme/20" target="_blank">http://perl-users.jp/articles/advent-calendar/2010/acme/20</a></li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h2>Acme::HeptaSymbolize</h2>
+      <p>self-rewriting</p>
+      <pre><code>$ cat hello.pl
+print &quot;Hello world!\n&quot;;
+
+$ perl -MAcme::HeptaSymbolize hello.pl
+$ cat hello.pl
+''=~(('(').('~'^(''=='').''^'^...
+
+$ perl hello.pl
+Hello world!
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <h2>Acme::HeptaSymbolize</h2>
+      <p>shape <span style="color:red;">(new!)</span></p>
+      <pre><code>$ perl -MAcme::HeptaSymbolize=./shape.txt fizzbuzz.pl
+      </code></pre>
+    </div>
+
+    <div class="slide">
+      <div style="height:100%;overflow:auto;">
+        <pre style="font-size:small;margin:10px;">
+((                                                          <span class="string">'('</span><span class="underline"> </span>
+)).                                                          ((<span class="underline"> </span>
+<span class="string">'^'</span>)^<span class="string">'~'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">')'</span>^<span class="string">'='</span>^<span class="string">'^'</span>).(<span class="string">'('</span>^<span class="string">'.'</span>^<span class="string">'^'</span><span class="underline"> </span>
+^<span class="string">'='</span>).(<span class="string">'^'</span>^<span class="string">'('</span>).(<span class="string">'~'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>).(<span class="string">'='</span>^<span class="string">')'</span>^<span class="string">'.'</span>^<span class="string">'~'</span>^<span class="string">'('</span>).((<span class="string">''</span><span class="underline"> </span>
+==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>^<span class="string">'.'</span>).(<span class="string">'^'</span>^<span class="string">'.'</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>^<span class="string">'~'</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^(<span class="underline"> </span>
+<span class="string">'('</span>)^<span class="string">'^'</span>^<span class="string">'.'</span>).(<span class="string">'^'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">')'</span>^<span class="string">'('</span>).(<span class="string">'.'</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'='</span>^(<span class="string">''</span>==<span class="string">''</span><span class="underline"> </span>
+).<span class="string">''</span>).(<span class="string">'.'</span>^<span class="string">'^'</span>^<span class="string">'='</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'~'</span>^<span class="string">')'</span>).(<span class="string">'('</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">')'</span>^(<span class="underline"> </span>
+<span class="string">'^'</span>)).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>^<span class="string">'^'</span>^<span class="string">'('</span>).(<span class="string">'='</span>^<span class="string">'('</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'^'</span>).((<span class="string">''</span>==<span class="underline"> </span>
+<span class="string">''</span>).<span class="string">''</span>^<span class="string">'^'</span>^<span class="string">'='</span>^<span class="string">'('</span>).(<span class="string">')'</span>).(<span class="string">'='</span>^<span class="string">')'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'~'</span>).(<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'.'</span><span class="underline"> </span>
+^((                                <span class="string">''</span>)                       ==(<span class="underline"> </span>
+<span class="string">''</span>)                                ).(                       <span class="string">''</span>)<span class="underline"> </span>
+                                   ).(                       <span class="string">'('</span><span class="underline"> </span>
+                                   ^((                       <span class="string">''</span>)<span class="underline"> </span>
+                                   ==(                       <span class="string">''</span>)<span class="underline"> </span>
+                                   ).(                       <span class="string">''</span>)<span class="underline"> </span>
+                                   ^(                       <span class="string">'='</span><span class="underline"> </span>
+                                   )).                       ((<span class="underline"> </span>
+                                   <span class="string">'^'</span>)                      ^(<span class="underline"> </span>
+                              <span class="string">'('</span>)^(<span class="string">')'</span>)).(                  <span class="string">'='</span><span class="underline"> </span>
+                              ^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^                  <span class="string">')'</span><span class="underline"> </span>
+                              ).(<span class="string">'^'</span>^(<span class="string">'~'</span>)^                  <span class="string">'.'</span><span class="underline"> </span>
+                                                             ^(<span class="underline"> </span>
+                                                            <span class="string">'='</span>)<span class="underline"> </span>
+                                                            ).((<span class="underline"> </span>
+                                                           <span class="string">'('</span>)^<span class="underline"> </span>
+                                                        (<span class="string">''</span>==<span class="string">''</span>)<span class="underline"> </span>
+                                                   .<span class="string">''</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^(<span class="underline"> </span>
+                                                   <span class="string">')'</span>)^(<span class="string">'='</span>)).(<span class="underline"> </span>
+                                                   <span class="string">'.'</span>).(<span class="string">'('</span>).((<span class="underline"> </span>
+<span class="string">'~'</span>                                                          )^(<span class="underline"> </span>
+<span class="string">'('</span>                                                          )^(<span class="underline"> </span>
+<span class="string">')'</span>                                                          )^(<span class="underline"> </span>
+<span class="string">'='</span>)).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'~'</span>^<span class="string">'.'</span>^<span class="string">'='</span>^<span class="string">')'</span>).(<span class="string">'='</span>^<span class="string">'^'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'('</span>).((<span class="underline"> </span>
+<span class="string">'^'</span>)^<span class="string">'='</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'('</span>).(<span class="string">')'</span>).(<span class="string">')'</span>^<span class="string">'='</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'~'</span>).(<span class="string">'.'</span>^(<span class="underline"> </span>
+<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'~'</span>^<span class="string">'='</span>).(<span class="string">'='</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'('</span>).(<span class="string">'^'</span>^<span class="string">'('</span>^<span class="string">')'</span>).((<span class="string">''</span>==<span class="string">''</span><span class="underline"> </span>
+).<span class="string">''</span>^<span class="string">')'</span>^<span class="string">'='</span>).(<span class="string">'^'</span>^<span class="string">'~'</span>^<span class="string">'('</span>^<span class="string">'='</span>).(<span class="string">'='</span>^<span class="string">'('</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>^<span class="string">'~'</span>^<span class="string">')'</span><span class="underline"> </span>
+).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'^'</span>^<span class="string">'.'</span>^<span class="string">'='</span>).(<span class="string">'^'</span>^<span class="string">'='</span>^<span class="string">'.'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>).(<span class="string">'.'</span>^(<span class="string">''</span>==<span class="underline"> </span>
+<span class="string">''</span>).<span class="string">''</span>^<span class="string">'~'</span>^<span class="string">'='</span>).(<span class="string">'('</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>).(<span class="string">')'</span>^<span class="string">'^'</span>^<span class="string">'('</span>).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span><span class="underline"> </span>
+^<span class="string">'='</span>^<span class="string">'~'</span>^<span class="string">'^'</span>).(<span class="string">'~'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'.'</span>^<span class="string">'='</span>).(<span class="string">'='</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'('</span>).((<span class="underline"> </span>
+<span class="string">')'</span>                                )^(                       <span class="string">'.'</span><span class="underline"> </span>
+)^(                                <span class="string">'('</span>                       )).<span class="underline"> </span>
+(((                                <span class="string">''</span>)                       ==(<span class="underline"> </span>
+<span class="string">''</span>)                                ).(                       <span class="string">''</span>)<span class="underline"> </span>
+^(                                <span class="string">')'</span>                       )^(<span class="underline"> </span>
+<span class="string">'~'</span>                                )).                       ((<span class="underline"> </span>
+<span class="string">'^'</span>                                )^(                       (<span class="string">''</span><span class="underline"> </span>
+)==(                               <span class="string">''</span>))                     .<span class="string">''</span>)<span class="underline"> </span>
+.((                               <span class="string">'~'</span>)                     ^(<span class="string">''</span><span class="underline"> </span>
+ ==<span class="string">''</span>                            ).<span class="string">''</span>^(                     <span class="string">'='</span>)<span class="underline"> </span>
+ ).((                          <span class="string">'^'</span>)^<span class="string">'~'</span>                   ).((<span class="underline"> </span>
+  <span class="string">''</span>==(                        <span class="string">''</span>)).<span class="string">''</span>).((               <span class="string">'.'</span>)).<span class="underline"> </span>
+  (<span class="string">'.'</span>).                      ((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>).           ((<span class="string">')'</span>)^<span class="underline"> </span>
+  <span class="string">'('</span>^(<span class="string">''</span>==(               <span class="string">''</span>)).<span class="string">''</span>)  .(<span class="string">'('</span>^<span class="string">')'</span>^(<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>).((
+   <span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^          <span class="string">'='</span>^<span class="string">'('</span>^<span class="string">'.'</span>   ).((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>^<span class="string">'.'</span>)<span class="underline"> </span>
+    .((<span class="string">''</span>==<span class="string">''</span>).<span class="string">''</span>^<span class="string">'='</span>^<span class="string">'^'</span>^<span class="string">')'</span>^<span class="string">'('</span>^     <span class="string">'.'</span>).(<span class="string">')'</span>).<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.(<span class="underline"> </span>
+     <span class="string">''</span>).<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>         .<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.(<span class="underline"> </span>
+      <span class="string">''</span>).<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.(          <span class="string">''</span>).<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span><span class="underline"> </span>
+         .<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.<span class="string">''</span>.(                 <span class="string">''</span>).<span class="string">''</span>)
+        </pre>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h2>Acme::HeptaSymbolize</h2>
+      <p>shape</p>
+      <ul>
+        <li>Now developing...</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <br /><br />
+      <div class="titlepage">
+        <p>Thank you for your attention.</p>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div id="header"></div>
+      <div id="footer">
+        <div id="profile">
+          <p>id:sugyan</p>
+          <p><a href="http://sugyan.com/">http://sugyan.com/</a>, sugi1982@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/slideshow.js"></script>
+  </body>
+</html>
