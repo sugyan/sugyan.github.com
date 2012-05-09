@@ -1,1 +1,1 @@
-<span class="mega-icon octocat"></span>[sugyan.com](http://sugyan.com/)
+[sugyan.com](http://sugyan.com/)
