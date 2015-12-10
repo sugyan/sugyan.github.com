@@ -51,7 +51,7 @@ body {
   /* font-family: "League Gothic", Impact, sans-serif; */
   font-family: 'Hiragino Maru Gothic Pro', 'ヒラギノ丸ゴ Pro W3', 'Lucida Grande', Verdana, 'ＭＳ Ｐゴシック', sans-serif;
   /* font-family: 'Bitstream Vera Sans Mono', Courier, monospace; */
-  line-height: 0.9em;
+  /* line-height: 0.9em; */
   letter-spacing: 0.02em;
   /* text-transform: uppercase; */
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); }
