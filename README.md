@@ -1,1 +1,1 @@
-[sugyan.com](http://sugyan.com/)
+[sugyan.com](https://sugyan.com/)
